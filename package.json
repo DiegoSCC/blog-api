@@ -19,10 +19,14 @@
   },
   "homepage": "https://github.com/DiegoSCC/blog-api#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.1",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3"
   }
 }
