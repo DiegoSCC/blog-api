@@ -26,7 +26,34 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  // Your login logic here (later)
+    try {
+        const { username , password, } = req.body;
+
+        const user = await User.findOne({ where: { username } });
+
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid username' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(401).json({ error: 'Invalid password' });
+        }
+
+        res.status(200).json({
+            message: 'Signing in...',
+            user: { id: user.id, username: user.username, email: user.email }
+        });
+
+    } catch (error) {
+
+        res.status(400).json({
+            error: 'Please check your user/password',
+            message: error.message
+        });
+
+    }
 };
 
 module.exports = {
