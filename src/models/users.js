@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const Posts = require('./posts'); 
 const sequelize = require('../config/database');
 
 const User = sequelize.define('User', {
@@ -27,5 +28,7 @@ const User = sequelize.define('User', {
 }, {
   timestamps: true
 });
+
+User.hasMany(Posts, { foreignKey: 'author_id' });
 
 module.exports = User;
